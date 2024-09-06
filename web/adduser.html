@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>USER MANAGEMENT</title>
+<script language="JavaScript">
+<!--
+function FP_swapImg() {//v1.0
+ var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
+ n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
+ elm.$src=elm.src; elm.src=args[n+1]; } }
+}
+
+function FP_preloadImgs() {//v1.0
+ var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
+ for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
+}
+
+function FP_getObjectByID(id,o) {//v1.0
+ var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
+ else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
+ if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
+ for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
+ f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
+ for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
+ return null;
+}
+function checkPhno()
+{
+        var retval = true;
+        var pno = document.f1.T5.value;
+        var stripped = pno.replace(/[\(\)\.\-\ ]/g, '');
+//strip out acceptable non-numeric characters
+    if (isNaN(parseInt(stripped))) {
+        alert("The phone number contains illegal characters.");
+        document.f1.T5.value="";
+        retval = false;
+        }
+        if(pno.length != 10)
+            {
+                alert("Illegal length");
+                document.f1.T5.value="";
+                retval = false;
+            }
+            return retval;
+}
+    function checkAge()
+{
+    var userage = document.f1.T2.value;
+    var testexp="";
+  var i = 0;
+  var returnvalue=true;
+    if(userage <= 0) 
+        {
+            alert("Please enter only positive integers");
+            document.f1.T2.value="";
+            returnvalue=false;
+        }
+        else if(userage > 58)
+            {
+                alert("You are too old to work");
+                document.f1.T2.value="";
+                returnvalue=false;
+            }
+    else if(userage <18 ) 
+        {
+            alert("Child labour is prohibited");
+            document.f1.T2.value="";
+            document.f1.T2.focus();
+            returnvalue=false;
+        }
+        else
+        {
+            var stripped = userage.replace(/[\(\)\.\-\ ]/g, '');
+            //strip out acceptable non-numeric characters
+            if (isNaN(parseInt(stripped))) {
+                alert("The age field contains illegal characters.");
+                document.f1.T2.value="";
+                document.f1.T2.focus();
+            }
+        }
+            return returnvalue;
+}
+
+function validateFields(form)
+{
+    var retval = true;
+    var formElements = form.elements;
+    for(var i=0; i<formElements.length; i++)
+        {
+               if(formElements[i].value == "")
+                {
+                    alert("Please fill all the fields");
+                    retval = false;
+                    break;
+                }
+        }
+        return retval;
+        
+}
+
+ //   function validateCharsOnly(obj) {
+ //   var re = /^[a-zA-Z]+$/;
+ //   alert( re.test.(obj.value) );
+//}
+    
+//var numb = '0123456789';
+//var lwr = 'abcdefghijklmnopqrstuvwxyz';
+//var upr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+ 
+    var parm = document.f1.T1.value;
+    var lwr = 'abcdefghijklmnopqrstuvwxyz';
+    var upr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+function isNum(parm) {return isValid(parm,numb);}
+function isLower(parm) {return isValid(parm,lwr);}
+function isUpper(parm) {return isValid(parm,upr);}
+function isAlphanum(parm) {return isValid(parm,lwr+upr+numb);} 
+function isAlpha() 
+{
+    var parm = document.f1.T1.value;
+    var lwr = 'abcdefghijklmnopqrstuvwxyz';
+    var upr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        return isValid(parm,lwr+upr);
+}
+function isValid(parm,val) {
+  if (parm == "") 
+      {
+          alert("Please enter text");
+            return false;
+      }
+  for (i=0; i<parm.length; i++) {
+    if (val.indexOf(parm.charAt(i),0) == -1) 
+        {
+                alert("please enter only alphabet");
+                document.f1.T1.value="";
+                return false;
+        }
+  }
+  return true;
+}
+// -->
+
+function validDate(datefield)
+{
+    //if field is empty display - warning and return false
+         if(datefield=="")
+         {
+            alert("Field should not be empty");
+            return false;
+         }
+    //declare valid variable with all valid characters: digits from 0 to 9 and backslash
+         var valid = "0123456789/";
+    //declare variable for counting number of slashes
+         var slashcount = 0;
+    //checking date length. If it not equals 10 - display warning and return false
+       //  if (datefield.length != 10) 
+         //{
+           // alert("Invalid date! The correct date format is like '01/01/2004'. Please try again.")
+            //return false;
+         //}
+    //check each character in the date field, one at a time
+         for (var i=0; i < datefield.length; i++)
+         {
+         temp = "" + datefield.substring(i, i+1);
+         //if character is backslash- count it
+         if (temp == "-") 
+         slashcount++;
+    //if character in temp does not exist in valid character string, display warning
+         if (valid.indexOf(temp) == "-1") 
+         {
+      //   alert("Invalid characters in your date. Please try again.")
+        // return false;
+         }
+    //if number of slashes not equals 2 display warning
+         if (slashcount != 2) 
+         {
+          //  alert("Invalid Date! The correct date format is like '01/01/2004'. Please try again.")
+            //return false;
+         }
+    //check position of slashes in date string. It should be 2 and 5
+    // Because the first character position is 0 not one
+         if((datefield.charAt(2)!= '-')||( datefield.charAt(5) != '-'))
+         {
+    //alert("Invalid date! The correct date format is like '01/01/2004'. Please try again.")
+         return false
+         }
+    }
+    return true
+}
+    
+</script>
+<style type="text/css">
+        td
+        {
+            font-size: 18px;
+            
+        }
+    </style>
+</head>
+<!-- "FP_preloadImgs(/*url*/'OMSAIRAM/button47.jpg',/*url*/'OMSAIRAM/button48.jpg',/*url*/'OMSAIRAM/button49.jpg',/*url*/'OMSAIRAM/button50.jpg')"-->
+<body background="bg17.jpg" onload="document.f1.T1.focus();">
+<center>
+<div style="position: absolute; width: 1232px; height: 315px; z-index: 1; left: 10px; top: 15px" id="layer1">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<b><font size="5" face="Berlin Sans FB Demi">&nbsp;USER MANAGEMENT - NEW USER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</font></b>
+        <hr>
+        <form method="get" action="http://localhost:8084/candy/UserCreServ" name="f1" onsubmit="return validateFields(this)"><!--onSubmit="location.href='_derived/nortbots.htm';return false;" webbot-onSubmit webbot-action="--WEBBOT-SELF--">
+		<!--webbot bot="SaveResults" U-File="_private/form_results.csv" S-Format="TEXT/CSV" S-Label-Fields="TRUE" startspan --><input TYPE="hidden" NAME="VTI-GROUP" VALUE="0"><!--webbot bot="SaveResults" i-checksum="43374" endspan -->
+		<table border="2">
+                <tr> <td>EMPLOYEE NAME  : </td> <td><input name="T1" type ="text" value ="" size="20" style="font-weight: 700" onchange="isAlpha()"> </td> </tr>
+                <tr> <td>AGE : </td>  <td> <input name="T2" size="20" type ="text" value ="" style="font-weight: 700" onchange="checkAge()"></td> </tr>
+                <tr> <td>DATE OF JOINING :</td> <td> <input name="T3" type ="text" value ="" size="20" style="font-weight: 700" onchange="validDate(T3.value)"></td> </tr> 
+		<tr> <td>ADDRESS : </td> <td> <input name="T4" size="20" type ="text" value ="" style="font-weight: 700"></td> </tr>
+		<tr> <td>PHONE NUMBER : </td> <td><input name="T5" type ="text" value ="" size="20" style="font-weight: 700" onchange="checkPhno()"></td></tr>
+                <tr> <td align="center" colspan="2"><input type="submit" name="s1" value="create"> </td></tr>
+            </table>
+	</form>
+	<p>&nbsp;</div>
+        </center>
+    
+    
+    
+  
+ 
+
+</body>
+
+</html>

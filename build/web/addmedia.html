@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ADDING NEW MEDIA</title>
+<script language="JavaScript">
+ 
+<!--
+function FP_swapImg() {//v1.0
+ var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
+ n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
+ elm.$src=elm.src; elm.src=args[n+1]; } }
+}
+
+function FP_preloadImgs() {//v1.0
+ var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
+ for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
+}
+
+function FP_getObjectByID(id,o) {//v1.0
+ var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
+ else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
+ if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
+ for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
+ f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
+ for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
+ return null;
+}
+// -->
+
+function checkPhno()
+{
+        var retval = true;
+        var pno = document.f2.T4.value;
+        var stripped = pno.replace(/[\(\)\.\-\ ]/g, '');
+//strip out acceptable non-numeric characters
+    if (isNaN(parseInt(stripped))) {
+        alert("The phone number contains illegal characters.");
+        document.f2.T4.value="";
+        retval = false;
+        }
+        if(pno.length != 10)
+            {
+                alert("Illegal length");
+                document.f2.T4.value="";
+                retval = false;
+            }
+            return retval;
+}
+function checkFax()
+{
+        var retval = true;
+        var faxno = document.f2.T7.value;
+        var stripped = faxno.replace(/[\(\)\.\-\ ]/g, '');
+//strip out acceptable non-numeric characters
+    if (isNaN(parseInt(stripped))) {
+        alert("The fax number contains illegal characters.");
+        document.f2.T7.value="";
+        retval = false;
+        }
+        if(faxno.length != 8)
+            {
+                alert("Illegal length");
+                document.f2.T7.value="";
+                retval = false;
+            }
+            return retval;
+}
+
+function emailValid()
+{
+    var aemail = document.f2.T6.value;
+    //if email field is empty - warning displays and return false
+         if(aemail=="")
+         {
+    alert ("This field is required. Please enter email myemail@mysite.com")
+         return false
+         }
+         //get email string length
+         len = aemail.length
+         //check position of @ character.
+         //it may be anywhere but not in the beginning or at the end of string.
+         if((aemail.charAt(1)=='@')||(aemail.charAt(1)=='.'))
+             {
+                alert ("Invalid email. Please enter email like myemail@mysite.com");
+                document.f2.T6.value="";
+                return false;
+                
+                }
+         if((aemail.charAt(len-2)=='@')||(aemail.charAt(len-2)=='.'))
+             {
+                alert ("Invalid email. Please enter email like myemail@mysite.com");
+                document.f2.T6.value="";
+                return false
+                
+                }
+    //count number of @ occurrences and number of dot occurrences
+         count=0
+         dotcount=0
+    for (i=0; i< aemail.length; i++)
+    {
+         if(aemail.charAt(i)=='@')
+         count++
+         if(aemail.charAt(i)=='.')
+         dotcount++
+          }
+    //if @ or dot occurs not once display warning and return false
+         if((count !=1)||(dotcount !=1))
+         {
+            alert ("Invalid email. Please enter email like myemail@mysite.com");
+            document.f2.T6.value="";
+            return false
+    }
+    return true
+}
+    
+function isAlpha(parm,num) 
+{
+    //var parm = document.f1.T1.value;
+    var lwr = 'abcdefghijklmnopqrstuvwxyz123456789';
+    var upr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ';
+        return isValid(parm,num,lwr+upr);
+}
+function isValid(parm,num,val) {
+  if (parm == "") 
+      {
+          alert("Please enter text");
+            return false;
+      }
+  for (i=0; i<parm.length; i++) {
+    if (val.indexOf(parm.charAt(i),0) == -1) 
+        {
+                alert("please enter valid name");
+                if(num==1)
+                    document.f2.T1.value="";
+                else if(num==2)
+                    document.f2.T2.value="";
+                else
+                    document.f2.T3.value="";
+                return false;
+        }
+  }
+  return true;
+}        
+</script>
+<style type="text/css">
+        td
+        {
+            font-size: 24px;
+            
+        }
+    </style>
+</head>
+
+<body bgcolor="AABBCC" onload="FP_preloadImgs(/*url*/'OMSAIRAM/button1D1.jpg', /*url*/'OMSAIRAM/button1E1.jpg', /*url*/'OMSAIRAM/button61.jpg', /*url*/'OMSAIRAM/button62.jpg')">
+    <center>
+<div style="position: absolute; width: 1240px; height: 502px; z-index: 1; left: 10px; top: 15px" id="layer1">
+    <h1> ADDING NEW MEDIA </h1> <hr>
+<form method="post" action="http://localhost:8084/candy/AddMedServ" name="f2" ><!--onSubmit="location.href='_derived/nortbots.htm';return false;" webbot-onSubmit webbot-action="--WEBBOT-SELF--">
+		<!--webbot bot="SaveResults" U-File="_private/form_results.csv" S-Format="TEXT/CSV" S-Label-Fields="TRUE" startspan --><input TYPE="hidden" NAME="VTI-GROUP" VALUE="0"><!--webbot bot="SaveResults" i-checksum="43374" endspan -->
+		<table border="2"> 
+                <tr> <td> MEDIA TYPE </td> <td>: </td> <td> <select size="1" name="D1">
+		<option selected>TV</option>
+		<option>NEWSPAPER</option>
+		</select></td></tr>
+                <tr> <td> MEDIA NAME </td> <td>: </td> <td><input name="T1" size="20" style="font-weight: 700" onchange="isAlpha(T1.value,1)"></td></tr>
+		<tr> <td>LANGUAGE </td> <td>: </td> <td> <input name="T2" size="20" style="font-weight: 700" onchange="isAlpha(T2.value,2)"></td></tr>
+		<tr> <td>CONTACT PERSON NAME </td> <td>: </td> <td> <input name="T3" size="20" style="font-weight: 700" onchange="isAlpha(T3.value,3)"></td></tr>
+		<tr> <td>PHONE NUMBER </td> <td>:</td> <td> <input name="T4" size="20" style="font-weight: 700" onchange="checkPhno()"></td></tr>
+		<tr> <td>ADDRESS </td> <td>: </td> <td> <input name="T5" size="20" style="font-weight: 700"></td></tr>
+                <tr> <td>EMAIL </td> <td>: </td> <td> <input name="T6" size="20" style="font-weight: 700" onchange="emailValid()"></td></tr>
+                <tr> <td>FAX </td> <td>: </td> <td> <input type="text" name="T7" size="23" onchange="checkFax()"></td> </tr>
+                <tr> <td align ="center" colspan ="3"> <input type="submit" name="b1" value="ADD"> </td> </tr>
+            </table>
+        </form>
+	<p>&nbsp;</div>
+</center>
+</body>
+
+</html>

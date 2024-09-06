@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+        li,a
+        {
+            font-size: 14px;
+            
+        }
+        a:hover
+        {
+            color: yellow;
+        }
+        a:visited
+        {
+            color: white;
+        }
+    </style>
+  </head>
+  <body background="bg10.jpg">
+           <ul><b>USER MANAGEMENT</b>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li><a href ="adduser.html" target="c">ADD USER</a></li>
+          <li>  <a href ="deleteuser.html" target="c">DELETE USER</a></li>
+          <li>  <a href ="modifyuser.html" target="c">MODIFY</a></li>
+          </ul>
+          
+          <ul><b>MEDIA PROFILE</b>
+             <li><a href="addmedia.html" target="c">ADD MEDIA</a></li>
+             <li> MODIFY MEDIA </li> <ul>
+              <li> <a href="modifymedia.html" target="c">CONTACT DETAILS</a> </li>
+          <li> <a href="modifymedia1.jsp" target="c">CHARGES</a> </li> </ul>
+          </ul>
+            <ul><b>VIEW DETAILS</b>
+          <li><a href ="viewallcust.jsp" target="c">CUSTOMERS</a></li>
+          <li>  <a href ="viewallmed.jsp" target="c">MEDIA</a></li>
+          <li>  <a href ="viewallusers.jsp" target="c">USERS</a></li>
+          </ul>
+          
+          <form name="formrep1" action="bkgrpts.jsp" method="get">
+          <a href ="bkgrpts.jsp" target="c">REPORT GENERATION</a>
+      </form>    
+          <form name="formrep2" action="publishedrpts.jsp" method="get">
+          <a href ="publishedrpts.jsp" target="c">PUBLISHED BOOKINGS</a>
+      </form>    
+        
+      </body>
+</html>

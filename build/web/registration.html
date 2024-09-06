@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Type" content ="text/html; charset=UTF-8">
+<title>CUSTOMER DETAILS</title>
+<script language="JavaScript">
+<!--
+function FP_swapImg() {//v1.0
+ var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
+ n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
+ elm.$src=elm.src; elm.src=args[n+1]; } }
+}
+
+function FP_preloadImgs() {//v1.0
+ var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
+ for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
+}
+
+function FP_getObjectByID(id,o) {//v1.0
+ var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
+ else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
+ if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
+ for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
+ f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
+ for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
+ return null;
+}
+// -->
+function checkForEmpty(form)
+{
+    cn = document.creg.cname.value;
+    cper = document.creg.conperson.value;
+    caddr = document.creg.address.value;
+    phno = document.creg.phonenumber.value;
+    pin = document.creg.pin.value;
+    em = document.creg.email.value;
+    faxnum = document.creg.fax.value;
+    if(cn.length == 0 || cper.length == 0 || caddr.length == 0 || phno.length == 0 || pin.length == 0 || em.length == 0 || faxnum.length == 0)
+    {
+        alert("Please fill all the fields");
+        return false;
+    }
+    else 
+        return true;
+}
+function checkNum1(form)
+{
+    str = document.creg.cname.value;
+    var i, x ;
+    for(i=0; i< str.length; i++)
+        {
+            x = charAt(i);
+            if(x >= 0 && x <= 9)
+                {
+                    alert("please enter only alphabet");
+                    document.creg.cname.value= "";
+                    //return false;                
+                }
+        }
+      //  return true;
+}
+function checkPhno()
+{
+        var retval = true;
+        var pno = document.creg.phonenumber.value;
+        var stripped = pno.replace(/[\(\)\.\-\ ]/g, '');
+//strip out acceptable non-numeric characters
+    if (isNaN(parseInt(stripped))) {
+        alert("The phone number contains illegal characters.");
+        document.creg.phonenumber.value="";
+        retval = false;
+        }
+        if(pno.length != 10)
+            {
+                alert("Illegal length");
+                document.creg.phonenumber.value="";
+                retval = false;
+            }
+            return retval;
+}
+function checkPIN(num)
+{
+        var retval = true;
+        var pinno = document.creg.pin.value;
+        var stripped = pinno.replace(/[\(\)\.\-\ ]/g, '');
+//strip out acceptable non-numeric characters
+    if (isNaN(parseInt(stripped))) {
+        alert("The PIN code contains illegal characters.");
+        document.creg.pin.value="";
+        document.creg.pin.focus();
+        retval = false;
+        }
+        if(pinno.length != 6)
+            {
+                alert("Illegal length");
+                document.creg.pin.value="";
+                document.creg.pin.focus();
+                retval = false;
+            }
+            return retval;
+}
+function checkFax()
+{
+        var retval = true;
+        var faxno = document.creg.fax.value;
+        var stripped = faxno.replace(/[\(\)\.\-\ ]/g, '');
+//strip out acceptable non-numeric characters
+    if (isNaN(parseInt(stripped))) {
+        alert("The fax number contains illegal characters.");
+        document.creg.fax.value="";
+        retval = false;
+        }
+        if(faxno.length != 8)
+            {
+                alert("Illegal length");
+                document.creg.fax.value="";
+                retval = false;
+            }
+            return retval;
+}
+
+function emailValid()
+{
+    var aemail = document.creg.email.value;
+    //if email field is empty - warning displays and return false
+         if(aemail=="")
+         {
+    alert ("This field is required. Please enter email myemail@mysite.com")
+         return false
+         }
+         //get email string length
+         len = aemail.length
+         //check position of @ character.
+         //it may be anywhere but not in the beginning or at the end of string.
+         if((aemail.charAt(1)=='@')||(aemail.charAt(1)=='.'))
+             {
+                alert ("Invalid email. Please enter email like myemail@mysite.com");
+                document.creg.email.value="";
+                return false;
+                
+                }
+         if((aemail.charAt(len-2)=='@')||(aemail.charAt(len-2)=='.'))
+             {
+                alert ("Invalid email. Please enter email like myemail@mysite.com");
+                document.creg.email.value="";
+                return false
+                
+                }
+    //count number of @ occurrences and number of dot occurrences
+         count=0
+         dotcount=0
+    for (i=0; i< aemail.length; i++)
+    {
+         if(aemail.charAt(i)=='@')
+         count++
+         if(aemail.charAt(i)=='.')
+         dotcount++
+          }
+    //if @ or dot occurs not once display warning and return false
+         if((count !=1)||(dotcount !=1))
+         {
+            alert ("Invalid email. Please enter email like myemail@mysite.com");
+            document.creg.email.value="";
+            return false
+    }
+    return true
+}
+        
+function isAlpha(parm,num) 
+{
+    //var parm = document.f1.T1.value;
+    var lwr = 'abcdefghijklmnopqrstuvwxyz .';
+    var upr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        return isValid(parm,num,lwr+upr);
+}
+function isValid(parm,num,val) {
+  if (parm == "") 
+      {
+          alert("Please enter text");
+            return false;
+      }
+  for (i=0; i<parm.length; i++) {
+    if (val.indexOf(parm.charAt(i),0) == -1) 
+        {
+                alert("please enter only alphabet");
+                if(num==1)
+                    document.creg.cname.value="";
+                else
+                    document.creg.conperson.value="";
+                return false;
+        }
+  }
+  return true;
+}    
+</script>
+<style type="text/css">
+    td
+    {
+        font-size: 10pt;
+        color: black;
+    }
+    tr
+    {
+        background-color: white;
+    }
+</style>
+</head>
+<body background="imgg8.png" onload="document.creg.cname.focus();">
+    <form  name="creg" method="get" action="http://localhost:8084/candy/CustRegServ" onsubmit="return checkForEmpty()"> 
+<table align="right" border ="0" cellspacing="3" cellpadding="3"> <tr> <td>
+CUSTOMER NAME: </td> <td> <input type="text" name="cname" size="20" onchange="isAlpha(cname.value,1)"> </td>
+</tr>
+<tr> <td> CONTACT PERSON : </td> <td> <input type="text" name="conperson" size="20" onchange="isAlpha(conperson.value,2)"> </td>
+</tr>
+<tr> <td>
+ADDRESS : </td> <td> <input type="text" name="address" size="20"> </td></tr> 
+		<tr>
+                <td> PHONE NUMBER: </td> <td> <input type="text" name="phonenumber" size="20" onchange="checkPhno()"> </td> </tr>
+	<tr> <td> 
+                PIN: </td> <td> <input type="text" name="pin" size="20" onchange="checkPIN()"></td> </tr> 
+		<tr> <td> 
+                EMAIL ADDRESS: </td> <td> <input type="text" name="email" size="20" onchange="emailValid()"></td> </tr>
+		<tr> <td> 
+                FAX: </td> <td> <input type="text" name="fax" size="20" onchange="checkFax()"></td> </tr>
+<tr> <td colspan="2" align ="center"> <input type="submit" value="REGISTER" name="register"> </td> </tr> 
+</table>	</form>        
+</body>
+</html>
+

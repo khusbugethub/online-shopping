@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>MODIFY MEDIA DETAILS</title>
+<script language="javascript"> 
+function checkField(form)
+{
+    id = document.medmodify.medtype.value;
+    if(id.length == 0)
+        {
+            alert("Please enter ID");
+            return false;
+        }
+        else 
+            return true;
+}
+</script>
+<style type="text/css">
+        *
+        {
+            font-size: 24px;
+            
+        }
+    </style>
+</head>
+
+<body bgcolor="AABBCC">
+    <center>
+    <form name="medmodify" action="mediamodify.jsp" method="get" onsubmit="return checkField(this)">
+        <table>
+            <tr> <td>Enter Media ID: </td> <td> <input type="text" name="medtype" value=""> </td></tr>
+            <tr rowspan="2" align="center"><td><input type="submit" name="medmod" value="Fetch"> </td></tr>
+       </table> 
+    </form> 
+</center>
+<img src="imgg6.jpg" quality=high bgcolor=#666699  WIDTH="975" HEIGHT="325">
+    
+    
+</body>
+
+</html>

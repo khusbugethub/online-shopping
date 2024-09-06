@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+        function checkFields(form)
+        {
+            uname = document.caalogin.usrname.value;
+            passwd = document.caalogin.pwd.value;
+            if((uname.length == 0) || (passwd.length == 0))
+            {
+                alert("Please enter both username and password");
+                document.caalogin.pwd.value="";
+                document.caalogin.usrname.value="";
+                document.caalogin.usrname.focus();
+                return false;
+            }
+            else
+                return true;
+        }
+    </script>
+    <style type="text/css" >
+        body
+        {
+            
+        }
+    </style>
+  </head>
+       <body onload="document.creg.cname.focus();">
+      <center>
+          <h1 align="right">  <font face ="verdana" color ="12ffff">USER AUTHENTICATION </font></h1> <hr>
+         
+      <form name="caalogin" action ="http://localhost:8084/candy/UserAuthServ" method="GET" target="_parent" onsubmit="return checkFields(this)">
+  <table align="right" border="0" cellspacing="8" cellpadding="8">
+<tbody>
+<tr>
+    <td bgcolor="white" style="font-size:200%;">USER NAME</td>
+<td>
+    <input type="text" maxlength="25" name ="usrname" value="">
+        
+</td>
+</tr>
+<tr>
+<td bgcolor="white" style="font-size:200%;">PASSWORD</td>
+<td>
+    <input type="password" length ="25" name ="pwd" value="">
+<td>
+</tr>
+<tr>
+<tr>
+
+<td>
+    <input type="submit" name="LOGIN" value="LOGIN">
+</td>
+</form>
+
+              
+<form name="cancelform" action="loginerror.html" target="_top">
+<td>
+    <input type="submit" name="CANCEL" value="CANCEL">
+</td>
+
+</form>
+</tr>
+</tr>
+</tbody>
+        
+</table>
+          
+</center>
+     <!---    <img src="im4.jpg" width="1400" height="600" />   -->
+       <body style = "background: url(imgg13.png)">
+  </body>
+</html>
